@@ -3,109 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patent Management System | Technical Report</title>
+    <title>Patent Management System | Documentation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050b1a;
-            --card-bg: rgba(30, 41, 59, 0.6);
-            --accent-color: #25bafa;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #0d1117;
+            --sidebar-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-heading: #f0f6fc;
+            --border-color: #30363d;
+            --code-bg: #010409;
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
             display: flex;
+            line-height: 1.6;
         }
 
         /* Sidebar Navigation */
         nav.sidebar {
-            width: 280px;
+            width: 300px;
             height: 100vh;
-            background: rgba(5, 11, 26, 0.95);
-            border-right: 1px solid var(--glass-border);
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
             position: fixed;
             padding: 2rem;
             overflow-y: auto;
         }
 
-        nav.sidebar h2 { font-size: 1rem; color: var(--accent-color); text-transform: uppercase; margin-bottom: 2rem; }
-        nav.sidebar a {
+        .sidebar h2 { font-size: 1.2rem; color: var(--accent-color); margin-bottom: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block; }
+        .sidebar a {
             display: block;
-            color: var(--text-dim);
+            color: var(--text-main);
             text-decoration: none;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            transition: 0.3s;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            transition: 0.2s;
         }
-        nav.sidebar a:hover { color: var(--accent-color); transform: translateX(5px); }
+        .sidebar a:hover { color: var(--accent-color); padding-left: 5px; }
 
         /* Main Content */
         main {
-            margin-left: 280px;
+            margin-left: 300px;
             padding: 4rem;
             width: 100%;
+            max-width: 1000px;
         }
 
-        .back-home {
-            text-decoration: none;
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            display: inline-block;
-        }
+        header { margin-bottom: 4rem; text-align: center; }
+        h1 { font-size: 3rem; color: var(--text-heading); margin-bottom: 0.5rem; }
+        .subtitle { font-size: 1.2rem; color: var(--accent-color); }
 
-        .doc-card {
-            background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            margin-bottom: 3rem;
-        }
-
-        h1 { font-size: 2.5rem; margin-top: 0; background: linear-gradient(to right, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h2 { color: var(--accent-color); border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; margin-top: 2rem; }
-        p { line-height: 1.8; color: var(--text-main); }
+        section { margin-bottom: 5rem; padding-top: 2rem; }
+        h2 { font-size: 2rem; color: var(--text-heading); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        h3 { color: var(--accent-color); margin-top: 2rem; }
 
         /* Requirements Table */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
-            background: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            overflow: hidden;
+            background: var(--sidebar-bg);
+            border: 1px solid var(--border-color);
         }
-        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--glass-border); }
-        th { color: var(--accent-color); font-weight: 600; }
+        th, td { padding: 1rem; text-align: left; border: 1px solid var(--border-color); }
+        th { background: #21262d; color: var(--accent-color); }
 
-        /* Code Block Styling */
-        pre {
-            background: #010409;
+        /* Code Block */
+        .code-container {
+            background: var(--code-bg);
             padding: 1.5rem;
-            border-radius: 10px;
-            overflow-x: auto;
-            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
             font-family: 'Fira Code', monospace;
             font-size: 0.9rem;
             color: #d1d5da;
+            overflow-x: auto;
+            margin: 1.5rem 0;
         }
 
-        code .keyword { color: #ff7b72; }
-        code .string { color: #a5d6ff; }
-        code .func { color: #d2a8ff; }
-        code .comment { color: #8b949e; }
+        .keyword { color: #ff7b72; }
+        .string { color: #a5d6ff; }
+        .func { color: #d2a8ff; }
+        .comment { color: #8b949e; }
 
-        .tag-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 1rem 0; }
-        .tag { background: rgba(37, 186, 250, 0.1); border: 1px solid var(--accent-color); color: var(--accent-color); padding: 4px 12px; border-radius: 5px; font-size: 0.75rem; }
+        /* Placeholder for Screenshots/Diagrams */
+        .image-placeholder {
+            width: 100%;
+            min-height: 300px;
+            background: #161b22;
+            border: 2px dashed var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            color: var(--accent-color);
+        }
+
+        footer { text-align: center; padding: 4rem; border-top: 1px solid var(--border-color); margin-top: 5rem; font-size: 0.8rem; }
 
         @media (max-width: 768px) {
             nav.sidebar { display: none; }
@@ -116,85 +120,88 @@
 <body>
 
     <nav class="sidebar">
-        <h2>Contents</h2>
+        <h2>Documentation</h2>
         <a href="#abstract">01 Abstract</a>
         <a href="#requirements">02 Requirements</a>
-        <a href="#application">03 Applications</a>
-        <a href="#design">04 System Design</a>
+        <a href="#application">03 Application</a>
+        <a href="#design">04 Design & Logic</a>
         <a href="#algorithm">05 Algorithm</a>
         <a href="#source-code">06 Source Code</a>
-        <a href="#conclusion">07 Conclusion</a>
-        <a href="#future">08 Future Scope</a>
+        <a href="#execution">07 Execution Output</a>
+        <a href="#conclusion">08 Conclusion</a>
+        <a href="#future">09 Future Scope</a>
+        <a href="#references">10 References</a>
     </nav>
 
     <main>
-        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Return to Universe</a>
-
-        <section id="header">
+        <header>
             <h1>Patent Management System</h1>
-            <p style="font-size: 1.2rem; color: var(--text-dim);">SQL Integrated Patent Tracking & Analysis Tool</p>
-            <div class="tag-list">
-                <span class="tag">Python 3.8+</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">Database Management</span>
-                <span class="tag">CRUD</span>
-            </div>
-        </section>
+            <p class="subtitle">Dynamic SQL Integration for Intellectual Property</p>
+        </header>
 
-        <section id="abstract" class="doc-card">
+        <section id="abstract">
             <h2>Abstract</h2>
-            <p>
-                In the ever-evolving landscape of innovation and intellectual property, efficient management and tracking of patents is crucial for both inventors and organizations. 
-                This project, titled <b>"Patent Management System with SQL Integration"</b>, is designed to serve as a dynamic, scalable, and user-friendly software solution for storing, retrieving, and analyzing patent data.
-            </p>
-            <p>
-                Initially implemented using in-memory storage, the system has been significantly enhanced with an SQL-based backend to ensure persistent data storage and real-time data manipulation. Users can perform keyword-based searches, filter by year or inventor, and view insightful statistics.
-            </p>
+            <p>Efficient management and tracking of patents is crucial for inventors and organizations. This project, <b>"Patent Management System with SQL Integration"</b>, serves as a dynamic, scalable, and user-friendly software solution for storing, retrieving, and analyzing patent data.</p>
+            <p>The transition from a volatile in-memory model to a structured <b>MySQL database</b> ensures persistent storage, eliminating data loss upon program termination and allowing for complex querying and data analytics. Patent records include unique IDs, titles, inventor names, filing dates, and detailed descriptions.</p>
         </section>
 
-        <section id="requirements" class="doc-card">
+        <section id="requirements">
             <h2>Requirement Analysis</h2>
             <h3>Hardware Requirements</h3>
             <table>
                 <tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr>
                 <tr><td>Processor (CPU)</td><td>Pentium Dual Core</td><td>Intel i3 or higher</td></tr>
                 <tr><td>RAM</td><td>2 GB</td><td>4 GB or more</td></tr>
-                <tr><td>Storage</td><td>500 MB Free Space</td><td>1 GB+</td></tr>
+                <tr><td>Storage</td><td>500 MB Free Space</td><td>1 GB+ Free Space</td></tr>
                 <tr><td>Display</td><td>1024 x 768</td><td>1366 x 768 or higher</td></tr>
             </table>
 
             <h3>Software Requirements</h3>
             <table>
                 <tr><td>Operating System</td><td>Windows 7/8/10/11, Linux, or macOS</td></tr>
-                <tr><td>Programming Language</td><td>Python 3.8 or higher</td></tr>
-                <tr><td>Database</td><td>MySQL (Integrated via mysql-connector)</td></tr>
-                <tr><td>IDE</td><td>VS Code / PyCharm / IDLE</td></tr>
+                <tr><td>Language</td><td>Python 3.8 or higher</td></tr>
+                <tr><td>Database</td><td>MySQL (mysql-connector-python)</td></tr>
+                <tr><td>Environment</td><td>VS Code / PyCharm / IDLE</td></tr>
             </table>
         </section>
 
-        <section id="application" class="doc-card">
-            <h2>Application & Use Cases</h2>
-            <p>This system serves as a foundational model for real-world intellectual property management tools.</p>
+        <section id="application">
+            <h2>Application</h2>
+            <p>This system acts as a foundational model for real-world intellectual property management tools. Key use cases include:</p>
             <ul>
-                <li><b>Educational Use:</b> Ideal for CS students learning CRUD operations and DB connectivity.</li>
-                <li><b>R&D Teams:</b> Helps individual inventors track their innovation pipeline.</li>
-                <li><b>Legal Teams:</b> Assists law firms in tracking patent litigation risks and renewal deadlines.</li>
-                <li><b>Government:</b> Organizing national patent databases for public search.</li>
+                <li><b>Educational Use:</b> Demonstrating CRUD operations and database connectivity to students.</li>
+                <li><b>R&D Teams:</b> Tracking innovation pipelines and internal IP catalogs.</li>
+                <li><b>Legal Teams:</b> Managing renewal deadlines and prosecution support.</li>
+                <li><b>Government Agencies:</b> Facilitating public patent searches and handle filings efficiently.</li>
             </ul>
         </section>
 
-        <section id="design" class="doc-card">
-            <h2>System Design</h2>
-            <p>The system follows a modular, cyclic workflow where every action (Search, Create, Edit, Delete) returns the user to the central Main Menu after updating the <b>Patent Manager (MySQL Database)</b>.</p>
-            <!-- USER NOTE: Insert your Block Diagram or Flowchart image here -->
-            <div style="background: rgba(0,0,0,0.3); border: 1px dashed var(--accent-color); padding: 2rem; text-align: center; border-radius: 10px;">
-                <p style="color: var(--accent-color);"><i class="fas fa-project-diagram"></i> [Logic Flow: Start -> Main Menu -> Action -> DB Update -> Output -> Loop]</p>
+        <section id="design">
+            <h2>Design Logic</h2>
+            <p>The system utilizes a <b>Block Diagram</b> approach starting from a "Main Menu" hub. Each choice (Create, Edit, Delete, Search) interacts with the "Patent Manager" block, representing the MySQL backend.</p>
+            <div class="image-placeholder">
+                <i class="fas fa-project-diagram" style="margin-right:10px;"></i> [Insert Block Diagram / Flowchart here]
             </div>
+            <p>The cyclic workflow ensures the user can perform multiple operations in a single session, with confirmation messages displayed after every successful database transaction.</p>
         </section>
 
-        <section id="source-code" class="doc-card">
-            <h2>Source Code Snippet</h2>
-            <p>Core Database Connection Logic:</p>
+        <section id="algorithm">
+            <h2>Algorithm</h2>
+            <ol>
+                <li>Start program and establish MySQL connection.</li>
+                <li>Display Main Menu (Search, Show All, Create, Edit, Delete, Exit).</li>
+                <li><b>If Search:</b> Prompt for Serial Number, Date, Status, or Region. Query database and display results.</li>
+                <li><b>If Show All:</b> Offer sorting (Date, Name, Status). Execute SQL and return results.</li>
+                <li><b>If Create:</b> Take user input, generate next serial number, and INSERT into database.</li>
+                <li><b>If Edit:</b> Fetch current details by S_No, update selected field, and save changes.</li>
+                <li><b>If Delete:</b> Confirm S_No, remove record from database upon user confirmation.</li>
+                <li><b>If Exit:</b> Close database connection and terminate.</li>
+            </ol>
+        </section>
+
+        <section id="source-code">
+            <h2>Source Code (Python)</h2>
+            <div class="code-container">
 <pre><code><span class="comment"># PATENT MANAGER DATABASE CONNECTION</span>
 <span class="keyword">import</span> mysql.connector
 <span class="keyword">import</span> datetime
@@ -208,35 +215,60 @@
     )
     <span class="keyword">return</span> conn
 
+<span class="comment"># SEARCH LOGIC</span>
 <span class="keyword">def</span> <span class="func">search_by_sno</span>():
     conn = <span class="func">con</span>()
     cur = conn.<span class="func">cursor</span>()
     sno = <span class="func">int</span>(<span class="func">input</span>(<span class="string">"Enter serial number: "</span>))
     cur.<span class="func">execute</span>(<span class="string">"SELECT * FROM patents WHERE s_no = %s"</span>, (sno,))
     result = cur.<span class="func">fetchone</span>()
-    ...</code></pre>
+    <span class="keyword">if</span> result: <span class="func">print</span>(result)
+    <span class="keyword">else</span>: <span class="func">print</span>(<span class="string">"No patent found!"</span>)</code></pre>
+            </div>
         </section>
 
-        <section id="conclusion" class="doc-card">
+        <section id="execution">
+            <h2>Execution & Sample Outputs</h2>
+            <p>Below is the structure of the MySQL table used to store patent data:</p>
+            <table>
+                <tr><th>Field</th><th>Type</th><th>Null</th><th>Key</th></tr>
+                <tr><td>s_no</td><td>int</td><td>NO</td><td>PRI</td></tr>
+                <tr><td>title</td><td>varchar(255)</td><td>NO</td><td></td></tr>
+                <tr><td>author_name</td><td>varchar(100)</td><td>NO</td><td></td></tr>
+                <tr><td>date_time</td><td>datetime</td><td>NO</td><td></td></tr>
+            </table>
+            <div class="image-placeholder">
+                <i class="fas fa-terminal" style="margin-right:10px;"></i> [Insert Execution Screenshots here]
+            </div>
+        </section>
+
+        <section id="conclusion">
             <h2>Conclusion</h2>
-            <p>
-                The Patent Manager project successfully demonstrates the integration of Python programming with a MySQL database. 
-                The modular design and clear workflow make the system user-friendly and adaptable for future enhancements, providing practical exposure to CRUD operations and the software development lifecycle.
-            </p>
+            <p>The Patent Manager project successfully integrates Python programming with a MySQL database. It provides a robust, menu-driven interface that ensures data integrity through well-managed transactions. This tool serves as an excellent foundational project for learning CRUD operations and the software development lifecycle.</p>
         </section>
 
-        <section id="future" class="doc-card">
-            <h2>Future Enhancements</h2>
+        <section id="future">
+            <h2>Future Enhancement</h2>
             <ul>
-                <li><b>User Authentication:</b> Implementing role-based access for Admins and Users.</li>
-                <li><b>Export/Import:</b> Allowing data exchange via CSV or Excel files.</li>
-                <li><b>GUI Development:</b> Transitioning from CLI to a web-based dashboard or Desktop GUI.</li>
-                <li><b>Analytics:</b> Integrating charts and reports to visualize patent trends over time.</li>
+                <li><b>User Authentication:</b> Role-based access for Admin and Users.</li>
+                <li><b>Keyword Search:</b> Text-based search across titles and descriptions.</li>
+                <li><b>GUI Implementation:</b> Transitioning from Command Line to a Web Dashboard.</li>
+                <li><b>Analytics Dashboard:</b> Graphical charts showing patent trends over time.</li>
+            </ul>
+        </section>
+
+        <section id="references">
+            <h2>Bibliography / References</h2>
+            <ul>
+                <li>MySQL Official Documentation: <a href="https://dev.mysql.com/doc/">dev.mysql.com/doc/</a></li>
+                <li>Python 3 Official Documentation: <a href="https://docs.python.org/3/">docs.python.org/3/</a></li>
+                <li>CBSE Computer Science Project Guidelines: <a href="https://cbseacademic.nic.in/">cbseacademic.nic.in</a></li>
+                <li>Triangle IP Blog: "Patent Management Software Best Practices" (2025).</li>
             </ul>
         </section>
 
         <footer>
-            <p>&copy; 2026 S.R Mukhesh Kumar | Patent Management System Documentation</p>
+            <p>&copy; 2026 S.R Mukhesh Kumar | Standalone Patent Management Documentation Site</p>
         </footer>
     </main>
 
