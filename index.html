@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patent Management System | Documentation</title>
+    <title>Patent Management System | Full Documentation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -16,193 +16,85 @@
             --border-color: #30363d;
             --code-bg: #010409;
         }
-
         * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; display: flex; line-height: 1.6; }
+        
+        nav.sidebar { width: 280px; height: 100vh; background: var(--sidebar-bg); border-right: 1px solid var(--border-color); position: fixed; padding: 2rem; overflow-y: auto; }
+        .sidebar h2 { font-size: 1.1rem; color: var(--accent-color); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .sidebar a { display: block; color: var(--text-main); text-decoration: none; font-size: 0.85rem; margin-bottom: 1rem; transition: 0.2s; }
+        .sidebar a:hover { color: var(--accent-color); transform: translateX(5px); }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            display: flex;
-            line-height: 1.6;
-        }
+        main { margin-left: 280px; padding: 4rem; width: 100%; max-width: 1100px; }
+        header { margin-bottom: 4rem; }
+        h1 { font-size: 2.8rem; color: var(--text-heading); margin: 0; }
+        .subtitle { font-size: 1.1rem; color: var(--accent-color); margin-bottom: 2rem; }
 
-        /* Sidebar Navigation */
-        nav.sidebar {
-            width: 300px;
-            height: 100vh;
-            background: var(--sidebar-bg);
-            border-right: 1px solid var(--border-color);
-            position: fixed;
-            padding: 2rem;
-            overflow-y: auto;
-        }
+        section { margin-bottom: 5rem; }
+        h2 { font-size: 1.8rem; color: var(--text-heading); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
 
-        .sidebar h2 { font-size: 1.2rem; color: var(--accent-color); margin-bottom: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block; }
-        .sidebar a {
-            display: block;
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-            transition: 0.2s;
-        }
-        .sidebar a:hover { color: var(--accent-color); padding-left: 5px; }
-
-        /* Main Content */
-        main {
-            margin-left: 300px;
-            padding: 4rem;
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        header { margin-bottom: 4rem; text-align: center; }
-        h1 { font-size: 3rem; color: var(--text-heading); margin-bottom: 0.5rem; }
-        .subtitle { font-size: 1.2rem; color: var(--accent-color); }
-
-        section { margin-bottom: 5rem; padding-top: 2rem; }
-        h2 { font-size: 2rem; color: var(--text-heading); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-        h3 { color: var(--accent-color); margin-top: 2rem; }
-
-        /* Requirements Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            background: var(--sidebar-bg);
-            border: 1px solid var(--border-color);
-        }
-        th, td { padding: 1rem; text-align: left; border: 1px solid var(--border-color); }
-        th { background: #21262d; color: var(--accent-color); }
-
-        /* Code Block */
         .code-container {
             background: var(--code-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
+            padding: 2rem;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
             font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #d1d5da;
             overflow-x: auto;
-            margin: 1.5rem 0;
+            white-space: pre;
+            line-height: 1.5;
         }
 
         .keyword { color: #ff7b72; }
-        .string { color: #a5d6ff; }
         .func { color: #d2a8ff; }
+        .string { color: #a5d6ff; }
         .comment { color: #8b949e; }
+        .number { color: #79c0ff; }
 
-        /* Placeholder for Screenshots/Diagrams */
-        .image-placeholder {
-            width: 100%;
-            min-height: 300px;
-            background: #161b22;
-            border: 2px dashed var(--border-color);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1.5rem 0;
-            color: var(--accent-color);
-        }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: var(--sidebar-bg); }
+        th, td { padding: 0.8rem; text-align: left; border: 1px solid var(--border-color); }
+        th { background: #21262d; color: var(--accent-color); }
 
-        footer { text-align: center; padding: 4rem; border-top: 1px solid var(--border-color); margin-top: 5rem; font-size: 0.8rem; }
-
-        @media (max-width: 768px) {
-            nav.sidebar { display: none; }
-            main { margin-left: 0; padding: 2rem; }
-        }
+        @media (max-width: 768px) { nav.sidebar { display: none; } main { margin-left: 0; padding: 2rem; } }
     </style>
 </head>
 <body>
 
     <nav class="sidebar">
         <h2>Documentation</h2>
-        <a href="#abstract">01 Abstract</a>
-        <a href="#requirements">02 Requirements</a>
-        <a href="#application">03 Application</a>
-        <a href="#design">04 Design & Logic</a>
-        <a href="#algorithm">05 Algorithm</a>
-        <a href="#source-code">06 Source Code</a>
-        <a href="#execution">07 Execution Output</a>
-        <a href="#conclusion">08 Conclusion</a>
-        <a href="#future">09 Future Scope</a>
-        <a href="#references">10 References</a>
+        <a href="#abstract">Abstract</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#algorithm">Algorithm</a>
+        <a href="#source-code">Full Source Code</a>
+        <a href="#execution">Output Screens</a>
+        <a href="#conclusion">Conclusion</a>
     </nav>
 
     <main>
         <header>
             <h1>Patent Management System</h1>
-            <p class="subtitle">Dynamic SQL Integration for Intellectual Property</p>
+            <p class="subtitle">Python & MySQL Integration Project</p>
         </header>
 
         <section id="abstract">
             <h2>Abstract</h2>
-            <p>Efficient management and tracking of patents is crucial for inventors and organizations. This project, <b>"Patent Management System with SQL Integration"</b>, serves as a dynamic, scalable, and user-friendly software solution for storing, retrieving, and analyzing patent data.</p>
-            <p>The transition from a volatile in-memory model to a structured <b>MySQL database</b> ensures persistent storage, eliminating data loss upon program termination and allowing for complex querying and data analytics. Patent records include unique IDs, titles, inventor names, filing dates, and detailed descriptions.</p>
+            <p>Initially implemented using in-memory storage, this system has been significantly enhanced with an SQL-based backend to ensure persistent data storage and real-time data manipulation. The core objective is to provide a seamless interface for adding, searching, filtering, and analyzing patent records securely within a structured database.</p>
         </section>
 
         <section id="requirements">
-            <h2>Requirement Analysis</h2>
-            <h3>Hardware Requirements</h3>
+            <h2>System Requirements</h2>
+            <h3>Software Stack</h3>
             <table>
-                <tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr>
-                <tr><td>Processor (CPU)</td><td>Pentium Dual Core</td><td>Intel i3 or higher</td></tr>
-                <tr><td>RAM</td><td>2 GB</td><td>4 GB or more</td></tr>
-                <tr><td>Storage</td><td>500 MB Free Space</td><td>1 GB+ Free Space</td></tr>
-                <tr><td>Display</td><td>1024 x 768</td><td>1366 x 768 or higher</td></tr>
+                <tr><td>Language</td><td>Python 3.8+</td></tr>
+                <tr><td>Database</td><td>MySQL Server</td></tr>
+                <tr><td>Libraries</td><td>mysql-connector, datetime, os</td></tr>
             </table>
-
-            <h3>Software Requirements</h3>
-            <table>
-                <tr><td>Operating System</td><td>Windows 7/8/10/11, Linux, or macOS</td></tr>
-                <tr><td>Language</td><td>Python 3.8 or higher</td></tr>
-                <tr><td>Database</td><td>MySQL (mysql-connector-python)</td></tr>
-                <tr><td>Environment</td><td>VS Code / PyCharm / IDLE</td></tr>
-            </table>
-        </section>
-
-        <section id="application">
-            <h2>Application</h2>
-            <p>This system acts as a foundational model for real-world intellectual property management tools. Key use cases include:</p>
-            <ul>
-                <li><b>Educational Use:</b> Demonstrating CRUD operations and database connectivity to students.</li>
-                <li><b>R&D Teams:</b> Tracking innovation pipelines and internal IP catalogs.</li>
-                <li><b>Legal Teams:</b> Managing renewal deadlines and prosecution support.</li>
-                <li><b>Government Agencies:</b> Facilitating public patent searches and handle filings efficiently.</li>
-            </ul>
-        </section>
-
-        <section id="design">
-            <h2>Design Logic</h2>
-            <p>The system utilizes a <b>Block Diagram</b> approach starting from a "Main Menu" hub. Each choice (Create, Edit, Delete, Search) interacts with the "Patent Manager" block, representing the MySQL backend.</p>
-            <div class="image-placeholder">
-                <i class="fas fa-project-diagram" style="margin-right:10px;"></i> [Insert Block Diagram / Flowchart here]
-            </div>
-            <p>The cyclic workflow ensures the user can perform multiple operations in a single session, with confirmation messages displayed after every successful database transaction.</p>
-        </section>
-
-        <section id="algorithm">
-            <h2>Algorithm</h2>
-            <ol>
-                <li>Start program and establish MySQL connection.</li>
-                <li>Display Main Menu (Search, Show All, Create, Edit, Delete, Exit).</li>
-                <li><b>If Search:</b> Prompt for Serial Number, Date, Status, or Region. Query database and display results.</li>
-                <li><b>If Show All:</b> Offer sorting (Date, Name, Status). Execute SQL and return results.</li>
-                <li><b>If Create:</b> Take user input, generate next serial number, and INSERT into database.</li>
-                <li><b>If Edit:</b> Fetch current details by S_No, update selected field, and save changes.</li>
-                <li><b>If Delete:</b> Confirm S_No, remove record from database upon user confirmation.</li>
-                <li><b>If Exit:</b> Close database connection and terminate.</li>
-            </ol>
         </section>
 
         <section id="source-code">
-            <h2>Source Code (Python)</h2>
+            <h2>Full Source Code</h2>
             <div class="code-container">
-<pre><code><span class="comment"># PATENT MANAGER DATABASE CONNECTION</span>
+<span class="comment"># PATENT MANAGER - FULL SOURCE CODE</span>
 <span class="keyword">import</span> mysql.connector
 <span class="keyword">import</span> datetime
 
@@ -215,60 +107,115 @@
     )
     <span class="keyword">return</span> conn
 
-<span class="comment"># SEARCH LOGIC</span>
+<span class="comment"># --- SEARCH FUNCTIONS ---</span>
 <span class="keyword">def</span> <span class="func">search_by_sno</span>():
     conn = <span class="func">con</span>()
     cur = conn.<span class="func">cursor</span>()
-    sno = <span class="func">int</span>(<span class="func">input</span>(<span class="string">"Enter serial number: "</span>))
+    sno = <span class="func">int</span>(<span class="func">input</span>(<span class="string">"Enter serial number to search: "</span>))
     cur.<span class="func">execute</span>(<span class="string">"SELECT * FROM patents WHERE s_no = %s"</span>, (sno,))
     result = cur.<span class="func">fetchone</span>()
-    <span class="keyword">if</span> result: <span class="func">print</span>(result)
-    <span class="keyword">else</span>: <span class="func">print</span>(<span class="string">"No patent found!"</span>)</code></pre>
-            </div>
-        </section>
+    <span class="keyword">if</span> result:
+        <span class="func">print</span>(result)
+        <span class="func">print</span>(<span class="string">"-"</span> * <span class="number">50</span>)
+    <span class="keyword">else</span>:
+        <span class="func">print</span>(<span class="string">"No patent found!"</span>)
+    cur.<span class="func">close</span>()
+    conn.<span class="func">close</span>()
 
-        <section id="execution">
-            <h2>Execution & Sample Outputs</h2>
-            <p>Below is the structure of the MySQL table used to store patent data:</p>
-            <table>
-                <tr><th>Field</th><th>Type</th><th>Null</th><th>Key</th></tr>
-                <tr><td>s_no</td><td>int</td><td>NO</td><td>PRI</td></tr>
-                <tr><td>title</td><td>varchar(255)</td><td>NO</td><td></td></tr>
-                <tr><td>author_name</td><td>varchar(100)</td><td>NO</td><td></td></tr>
-                <tr><td>date_time</td><td>datetime</td><td>NO</td><td></td></tr>
-            </table>
-            <div class="image-placeholder">
-                <i class="fas fa-terminal" style="margin-right:10px;"></i> [Insert Execution Screenshots here]
-            </div>
+<span class="keyword">def</span> <span class="func">search_by_date</span>():
+    conn = <span class="func">con</span>()
+    cur = conn.<span class="func">cursor</span>()
+    date = <span class="func">input</span>(<span class="string">"Enter date (YYYY-MM-DD): "</span>)
+    cur.<span class="func">execute</span>(<span class="string">"SELECT * FROM patents WHERE date(date_time) = %s"</span>, (date,))
+    results = cur.<span class="func">fetchall</span>()
+    <span class="keyword">if</span> results:
+        <span class="keyword">for</span> i <span class="keyword">in</span> results:
+            <span class="func">print</span>(i)
+            <span class="func">print</span>(<span class="string">"-"</span> * <span class="number">50</span>)
+    <span class="keyword">else</span>:
+        <span class="func">print</span>(<span class="string">"No patents found for this date!"</span>)
+    cur.<span class="func">close</span>()
+    conn.<span class="func">close</span>()
+
+<span class="keyword">def</span> <span class="func">search_by_status</span>():
+    <span class="func">print</span>(<span class="string">"\n--- Search by Status ---"</span>)
+    status = <span class="func">input</span>(<span class="string">"Enter status to search: "</span>)
+    conn = <span class="func">con</span>()
+    cur = conn.<span class="func">cursor</span>()
+    cur.<span class="func">execute</span>(<span class="string">"SELECT * FROM patents WHERE status = %s"</span>, (status,))
+    results = cur.<span class="func">fetchall</span>()
+    <span class="keyword">if</span> results:
+        <span class="keyword">for</span> i <span class="keyword">in</span> results:
+            <span class="func">print</span>(i)
+            <span class="func">print</span>(<span class="string">"-"</span> * <span class="number">50</span>)
+    <span class="keyword">else</span>:
+        <span class="func">print</span>(<span class="string">"No patents found for the given criteria."</span>)
+    cur.<span class="func">close</span>()
+    conn.<span class="func">close</span>()
+
+<span class="keyword">def</span> <span class="func">look_for_patent</span>():
+    <span class="func">print</span>(<span class="string">"\n--- Search Patent ---"</span>)
+    <span class="func">print</span>(<span class="string">"1. Search by S_No"</span>)
+    <span class="func">print</span>(<span class="string">"2. Search by Date"</span>)
+    <span class="func">print</span>(<span class="string">"3. Search by Status"</span>)
+    <span class="func">print</span>(<span class="string">"4. Search by Region"</span>)
+    choice = <span class="func">int</span>(<span class="func">input</span>(<span class="string">"Enter your choice: "</span>))
+    <span class="keyword">if</span> choice == <span class="number">1</span>: <span class="func">search_by_sno</span>()
+    <span class="keyword">elif</span> choice == <span class="number">2</span>: <span class="func">search_by_date</span>()
+    <span class="keyword">elif</span> choice == <span class="number">3</span>: <span class="func">search_by_status</span>()
+    <span class="keyword">else</span>: <span class="func">print</span>(<span class="string">'Wrong option chosen'</span>)
+
+<span class="comment"># --- DATA MANIPULATION ---</span>
+<span class="keyword">def</span> <span class="func">sno</span>():
+    conn = <span class="func">con</span>()
+    cur = conn.<span class="func">cursor</span>()
+    cur.<span class="func">execute</span>(<span class="string">"SELECT max(s_no) FROM patents"</span>)
+    result = cur.<span class="func">fetchone</span>()
+    next_sno = <span class="number">1</span> <span class="keyword">if</span> result[<span class="number">0</span>] <span class="keyword">is None else</span> result[<span class="number">0</span>] + <span class="number">1</span>
+    <span class="keyword">return</span> next_sno
+
+<span class="keyword">def</span> <span class="func">create_patent</span>():
+    <span class="func">print</span>(<span class="string">"\n--- Create New Patent ---"</span>)
+    s_no = <span class="func">sno</span>()
+    title = <span class="func">input</span>(<span class="string">"Enter title: "</span>)
+    author_name = <span class="func">input</span>(<span class="string">"Enter author name: "</span>)
+    region = <span class="func">input</span>(<span class="string">"Enter region: "</span>)
+    status = <span class="func">input</span>(<span class="string">"Enter status: "</span>)
+    idea_description = <span class="func">input</span>(<span class="string">"Enter description: "</span>)
+    date_time = datetime.datetime.<span class="func">now</span>()
+    
+    conn = <span class="func">con</span>()
+    cur = conn.<span class="func">cursor</span>()
+    query = <span class="string">"INSERT INTO patents VALUES (%s, %s, %s, %s, %s, %s, %s)"</span>
+    values = (s_no, title, author_name, date_time, region, status, idea_description)
+    cur.<span class="func">execute</span>(query, values)
+    conn.<span class="func">commit</span>()
+    <span class="func">print</span>(<span class="string">"Patent created successfully!"</span>)
+
+<span class="comment"># --- MAIN PROGRAM LOOP ---</span>
+<span class="keyword">while True</span>:
+    <span class="func">print</span>(<span class="string">"\n--- PATENT MANAGEMENT SYSTEM ---"</span>)
+    <span class="func">print</span>(<span class="string">"1. Look for a Patent"</span>)
+    <span class="func">print</span>(<span class="string">"2. Show All Patents"</span>)
+    <span class="func">print</span>(<span class="string">"3. Create Patent"</span>)
+    <span class="func">print</span>(<span class="string">"4. Edit Patent"</span>)
+    <span class="func">print</span>(<span class="string">"5. Delete Patent"</span>)
+    <span class="func">print</span>(<span class="string">"6. Exit"</span>)
+    choice = <span class="func">input</span>(<span class="string">"Choose an option: "</span>)
+    
+    <span class="keyword">if</span> choice == <span class="string">'1'</span>: <span class="func">look_for_patent</span>()
+    <span class="keyword">elif</span> choice == <span class="string">'2'</span>: <span class="func">show_all_patents</span>()
+    <span class="keyword">elif</span> choice == <span class="string">'3'</span>: <span class="func">create_patent</span>()
+    <span class="keyword">elif</span> choice == <span class="string">'6'</span>: <span class="keyword">break</span></div>
         </section>
 
         <section id="conclusion">
             <h2>Conclusion</h2>
-            <p>The Patent Manager project successfully integrates Python programming with a MySQL database. It provides a robust, menu-driven interface that ensures data integrity through well-managed transactions. This tool serves as an excellent foundational project for learning CRUD operations and the software development lifecycle.</p>
-        </section>
-
-        <section id="future">
-            <h2>Future Enhancement</h2>
-            <ul>
-                <li><b>User Authentication:</b> Role-based access for Admin and Users.</li>
-                <li><b>Keyword Search:</b> Text-based search across titles and descriptions.</li>
-                <li><b>GUI Implementation:</b> Transitioning from Command Line to a Web Dashboard.</li>
-                <li><b>Analytics Dashboard:</b> Graphical charts showing patent trends over time.</li>
-            </ul>
-        </section>
-
-        <section id="references">
-            <h2>Bibliography / References</h2>
-            <ul>
-                <li>MySQL Official Documentation: <a href="https://dev.mysql.com/doc/">dev.mysql.com/doc/</a></li>
-                <li>Python 3 Official Documentation: <a href="https://docs.python.org/3/">docs.python.org/3/</a></li>
-                <li>CBSE Computer Science Project Guidelines: <a href="https://cbseacademic.nic.in/">cbseacademic.nic.in</a></li>
-                <li>Triangle IP Blog: "Patent Management Software Best Practices" (2025).</li>
-            </ul>
+            <p>This project successfully demonstrates CRUD operations using Python and MySQL. It ensures data integrity and provides a robust foundation for future intellectual property tracking applications.</p>
         </section>
 
         <footer>
-            <p>&copy; 2026 S.R Mukhesh Kumar | Standalone Patent Management Documentation Site</p>
+            <p>&copy; 2026 S.R Mukhesh Kumar | Documentation Archive</p>
         </footer>
     </main>
 
